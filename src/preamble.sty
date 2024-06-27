@@ -1,0 +1,97 @@
+\ProvidesPackage{preamble}
+
+% Support of the Russian language
+\usepackage[]{mathtext} % russian in formulas
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% For references to books
+\usepackage[backend = biber, babel = other, style = numeric, sorting = none]{biblatex}
+\addbibresource{books.bib}
+
+% Images
+\usepackage{graphicx}
+\usepackage{wrapfig} % for the usage of wrapfigure
+\usepackage{floatflt} % ???
+\graphicspath{ {../images/} }
+
+% Tables
+\usepackage{multirow} % for cells of many rows
+\usepackage{multicol} % for cells of many columns
+\usepackage{hhline} % for horizontal lines with whitespaces
+\usepackage{caption}
+\usepackage{float}
+\usepackage{longtable}
+
+% Math
+\usepackage{amssymb} % ???
+\usepackage{amsmath} % ???
+\usepackage{amsthm}  % ???
+\usepackage{textcomp}
+\usepackage{gensymb} % for commands such as \degree or \celsius
+\usepackage{esint} % for curve intergrals with arrows
+
+% Colors
+\usepackage{xcolor} % provides names for some colors
+
+% Multiple files
+\usepackage{import} % for importing LaTeX files
+\usepackage{subfiles} % for compiling subfiles independently
+
+% Displaying code
+\usepackage{verbatim} % for monospaced font
+\usepackage{listings} % for listings
+
+% User control over the layout of the three basic list environments
+\usepackage{enumitem}
+
+% Smart dashed
+\usepackage[shortcuts,cyremdash]{extdash} % cyremdash provides long dash for cyrillic alphabeth
+
+% Formating
+\usepackage{indentfirst}
+\usepackage[left     = 1.5cm,
+            right    = 1.5cm,
+            top      = 2.0cm,
+            bottom   = 1.25cm,
+            includefoot,
+            footskip = 1.25cm ]{geometry}
+\setlength{\parskip}{ .5em plus .15em minus .08em } % интервалы между абзацами
+\setlength{\parindent}{0cm} % отступ при красной строке
+\setlength{\headheight}{15pt}
+
+% Page head and foot
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{ГКЭ по математике}}
+\fancyhead[R]{\textit{Билеты}}
+\fancyfoot[C]{\texttt{\textemdash~\thepage~\textemdash}}
+
+\usepackage{etoolbox}
+
+\renewcommand {\baselinestretch}{ 1.07 }
+
+\makeatletter
+\patchcmd\l@section{%
+  \nobreak\hfil\nobreak
+}{%
+  \nobreak
+  \leaders\hbox{%
+    $\m@th \mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$%
+  }%
+  \hfill
+  \nobreak
+}{}{\errmessage{\noexpand\l@section could not be patched}}
+\makeatother
+
+% References
+\usepackage{hyperref} % for hyper references
+\hypersetup{colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue,
+            filecolor=magenta,
+            urlcolor=blue,
+            pdfstartview=FitH,
+            pageanchor=false}
